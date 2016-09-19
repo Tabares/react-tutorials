@@ -10,6 +10,7 @@ import SetState from './components/SetState.jsx';
 import ForceUpdate from './components/ForceUpdate.jsx';
 import FindDOM from './components/FindDOM.jsx';
 import LifeCycle from './components/LifeCycle.jsx';
+import Forms from './components/Forms.jsx';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
@@ -52,7 +53,7 @@ class App extends React.Component {
             <LifeCycle myNumber = {this.state.data}></LifeCycle>
             <button onClick = {this.unmountApp}>Unmount This App</button>
         </div>
-
+        <Forms/>
       </div>
     );
   }
