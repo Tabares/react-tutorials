@@ -12,6 +12,7 @@ import FindDOM from './components/FindDOM.jsx';
 import LifeCycle from './components/LifeCycle.jsx';
 import Forms from './components/Forms.jsx';
 import FormProp from './components/form/FormProp.jsx';
+import Event from './components/Event.jsx';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
@@ -56,6 +57,8 @@ class App extends React.Component {
         </div>
         <Forms/>
         <FormProp/>
+        <Event/>
+
 
       </div>
     );

@@ -107,6 +107,10 @@
 	
 	var _FormProp2 = _interopRequireDefault(_FormProp);
 	
+	var _Event = __webpack_require__(/*! ./components/Event.jsx */ 185);
+	
+	var _Event2 = _interopRequireDefault(_Event);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -197,7 +201,8 @@
 	          )
 	        ),
 	        _react2.default.createElement(_Forms2.default, null),
-	        _react2.default.createElement(_FormProp2.default, null)
+	        _react2.default.createElement(_FormProp2.default, null),
+	        _react2.default.createElement(_Event2.default, null)
 	      );
 	    }
 	  }]);
@@ -23006,9 +23011,11 @@
 	        var _this = _possibleConstructorReturn(this, (FormProp.__proto__ || Object.getPrototypeOf(FormProp)).call(this, props));
 	
 	        _this.state = {
-	            data: 'Initial data... with props'
+	            data: 'Initial data... with props',
+	            data2: 'Initial data... with props'
 	        };
 	        _this.updateState = _this.updateState.bind(_this);
+	        _this.updateStateEvent = _this.updateStateEvent.bind(_this);
 	        return _this;
 	    }
 	
@@ -23016,6 +23023,12 @@
 	        key: 'updateState',
 	        value: function updateState(e) {
 	            this.setState({ data: e.target.value });
+	        }
+	    }, {
+	        key: 'updateStateEvent',
+	        value: function updateStateEvent() {
+	            this.setState({ data2: 'Updated Data from event using props' });
+	            this.setState({ data: 'Updated Data from event using props' });
 	        }
 	    }, {
 	        key: 'render',
@@ -23028,7 +23041,9 @@
 	                    'div',
 	                    null,
 	                    _react2.default.createElement(_Content2.default, { myDataProp: this.state.data,
-	                        updateStateProp: this.updateState })
+	                        myData2Prop: this.state.data2,
+	                        updateStateProp: this.updateState,
+	                        updateStateEventProp: this.updateStateEvent })
 	                )
 	            );
 	        }
@@ -23086,6 +23101,16 @@
 	                    "h3",
 	                    null,
 	                    this.props.myDataProp
+	                ),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: this.props.updateStateEventProp },
+	                    "Event"
+	                ),
+	                _react2.default.createElement(
+	                    "h3",
+	                    null,
+	                    this.props.myData2Prop
 	                )
 	            );
 	        }
@@ -23095,6 +23120,83 @@
 	}(_react2.default.Component);
 	
 	exports.default = Content;
+
+/***/ },
+/* 185 */
+/*!*********************************************!*\
+  !*** ./src/client/app/components/Event.jsx ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Event = function (_React$Component) {
+	    _inherits(Event, _React$Component);
+	
+	    function Event(props) {
+	        _classCallCheck(this, Event);
+	
+	        var _this = _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).call(this, props));
+	
+	        _this.state = {
+	            data: 'Initial data...'
+	        };
+	        _this.updateState = _this.updateState.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(Event, [{
+	        key: 'updateState',
+	        value: function updateState() {
+	            this.setState({ data: 'Data updated...' });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.updateState },
+	                        'Click'
+	                    ),
+	                    _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        this.state.data
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Event;
+	}(_react2.default.Component);
+	
+	exports.default = Event;
 
 /***/ }
 /******/ ]);
