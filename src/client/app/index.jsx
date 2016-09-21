@@ -14,6 +14,8 @@ import Forms from './components/Forms.jsx';
 import FormProp from './components/form/FormProp.jsx';
 import Event from './components/Event.jsx';
 import ReactDOM from 'react-dom';
+import Refs from './components/Refs.jsx';
+import Keys from './components/keys/Keys.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -58,8 +60,8 @@ class App extends React.Component {
         <Forms/>
         <FormProp/>
         <Event/>
-
-
+        <Refs/>
+        <Keys/>
       </div>
     );
   }
