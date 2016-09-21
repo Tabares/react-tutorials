@@ -111,6 +111,10 @@
 	
 	var _Event2 = _interopRequireDefault(_Event);
 	
+	var _Refs = __webpack_require__(/*! ./components/Refs.jsx */ 186);
+	
+	var _Refs2 = _interopRequireDefault(_Refs);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -202,7 +206,8 @@
 	        ),
 	        _react2.default.createElement(_Forms2.default, null),
 	        _react2.default.createElement(_FormProp2.default, null),
-	        _react2.default.createElement(_Event2.default, null)
+	        _react2.default.createElement(_Event2.default, null),
+	        _react2.default.createElement(_Refs2.default, null)
 	      );
 	    }
 	  }]);
@@ -23197,6 +23202,91 @@
 	}(_react2.default.Component);
 	
 	exports.default = Event;
+
+/***/ },
+/* 186 */
+/*!********************************************!*\
+  !*** ./src/client/app/components/Refs.jsx ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 34);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Refs = function (_React$Component) {
+	    _inherits(Refs, _React$Component);
+	
+	    function Refs(props) {
+	        _classCallCheck(this, Refs);
+	
+	        var _this = _possibleConstructorReturn(this, (Refs.__proto__ || Object.getPrototypeOf(Refs)).call(this, props));
+	
+	        _this.state = {
+	            data: ''
+	        };
+	
+	        _this.updateState = _this.updateState.bind(_this);
+	        _this.clearInput = _this.clearInput.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(Refs, [{
+	        key: 'updateState',
+	        value: function updateState(e) {
+	            this.setState({ data: e.target.value });
+	        }
+	    }, {
+	        key: 'clearInput',
+	        value: function clearInput() {
+	            this.setState({ data: '' });
+	            _reactDom2.default.findDOMNode(this.refs.myInput).focus();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('input', { value: this.state.data, onChange: this.updateState, ref: 'myInput' }),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.clearInput },
+	                    'CLEAR'
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    this.state.data
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Refs;
+	}(_react2.default.Component);
+	
+	exports.default = Refs;
 
 /***/ }
 /******/ ]);
