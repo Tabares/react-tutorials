@@ -25,10 +25,17 @@ Adding React
 $ npm i react react-dom -S
 ```
 
+Adding Express
+
+```sh
+npm install express --save
+```
+
 How to run and build
 
 ```sh
 $ npm install
 $ npm run build
 $ npm run dev
+$ npm run start
 ```

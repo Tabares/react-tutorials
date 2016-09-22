@@ -1,5 +1,4 @@
 import React from 'react';
-import {render} from 'react-dom';
 import AwesomeComponent from './components/Component.jsx';
 import JSX from './components/JSX.jsx';
 import State from './components/State.jsx';
@@ -16,6 +15,14 @@ import Event from './components/Event.jsx';
 import ReactDOM from 'react-dom';
 import Refs from './components/Refs.jsx';
 import Keys from './components/keys/Keys.jsx';
+import About from './components/About.jsx';
+import Contact from './components/Contact.jsx';
+import Home from './components/Home.jsx';
+import MainLayout from './components/MainLayout.jsx';
+import { Router, Route, Link, hashHistory, IndexRoute  } from 'react-router';
+import SearchLayout from './components/SearchLayout.jsx';
+
+
 
 class App extends React.Component {
   constructor(props){
@@ -39,7 +46,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <h1> Master started kit with React, webpack and babel!</h1>
+        <h1> Master started kit with React, express, webpack and babel!</h1>
         <br/><p>Npm as tool runner</p>
         <br/><h1> This is a Component!</h1>
         <AwesomeComponent/>
@@ -62,6 +69,8 @@ class App extends React.Component {
         <Event/>
         <Refs/>
         <Keys/>
+        <About/>
+        <Contact/>
       </div>
     );
   }
@@ -71,4 +80,16 @@ App.defaultProps = {
    footer: "Injected footer...",
 }
 
-render(<App/>, document.getElementById('app'));
+export default App;
+
+ReactDOM.render((
+  <Router>
+    <Route path="/" component={MainLayout}>
+      <IndexRoute component={App} />
+      <Route component={SearchLayout}>
+        <Route path="keys" component={Keys} />
+        <Route path="about" component={About} />
+      </Route>
+    </Route>
+  </Router>
+), document.getElementById('app'))
