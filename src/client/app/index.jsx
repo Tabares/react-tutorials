@@ -18,6 +18,11 @@ import Keys from './components/keys/Keys.jsx';
 import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
 import Home from './components/Home.jsx';
+import MainLayout from './components/MainLayout.jsx';
+import { Router, Route, Link, hashHistory, IndexRoute  } from 'react-router';
+import SearchLayout from './components/SearchLayout.jsx';
+
+
 
 class App extends React.Component {
   constructor(props){
@@ -42,18 +47,6 @@ class App extends React.Component {
     return (
       <div>
         <h1> Master started kit with React, express, webpack and babel!</h1>
-        <div>
-           <ul>
-              <li><Link>Homed</Link></li>
-              <li><Link>About</Link></li>
-              <li><Link>Contact</Link></li>
-           </ul>
-
-          {this.props.children}
-        </div>
-
-
-
         <br/><p>Npm as tool runner</p>
         <br/><h1> This is a Component!</h1>
         <AwesomeComponent/>
@@ -89,87 +82,13 @@ App.defaultProps = {
 
 export default App;
 
-//ReactDOM.render(<App/>, document.getElementById('app'));
-
-"use strict";
-import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
-
-//var { Router, Route, IndexRoute, Link, browserHistory } = ReactRouter
-
-var MainLayout = React.createClass({
-  render: function() {
-    return (
-      <div className="app">
-        <header className="primary-header"></header>
-        <aside className="primary-aside">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/users">Users</Link></li>
-            <li><Link to="/widgets">Widgets</Link></li>
-          </ul>
-        </aside>
-        <main>
-          {this.props.children}
-        </main>
-      </div>
-      )
-  }
-})
-
-var Homei = React.createClass({
-  render: function() {
-    return (<h1>Home Page</h1>)
-  }
-})
-
-var SearchLayout = React.createClass({
-  render: function() {
-    return (
-      <div className="search">
-        <header className="search-header"></header>
-        <div className="results">
-          {this.props.children}
-        </div>
-        <div className="search-footer pagination"></div>
-      </div>
-      )
-  }
-})
-
-var UserList = React.createClass({
-  render: function() {
-    return (
-      <ul className="user-list">
-        <li>Dan</li>
-        <li>Ryan</li>
-        <li>Michael</li>
-      </ul>
-      )
-  }
-})
-
-var WidgetList = React.createClass({
-  render: function() {
-    return (
-      <ul className="widget-list">
-        <li>Widget 1</li>
-        <li>Widget 2</li>
-        <li>Widget 3</li>
-      </ul>
-      )
-  }
-})
-
-// Note that with how CodePen works, I wasn't able to get the browserHistory to work
-// as the article suggests. The demo works without it, but you'll want to be sure to
-// use it in a real application
 ReactDOM.render((
   <Router>
     <Route path="/" component={MainLayout}>
-      <IndexRoute component={Homei} />
+      <IndexRoute component={App} />
       <Route component={SearchLayout}>
-        <Route path="users" component={UserList} />
-        <Route path="widgets" component={WidgetList} />
+        <Route path="keys" component={Keys} />
+        <Route path="about" component={About} />
       </Route>
     </Route>
   </Router>
