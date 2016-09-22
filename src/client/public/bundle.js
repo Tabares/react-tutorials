@@ -183,7 +183,7 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          ' Master started kit with React, webpack and babel!'
+	          ' Master started kit with React, express, webpack and babel!'
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -197,7 +197,7 @@
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                null,
-	                'Home'
+	                'Homed'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -282,17 +282,165 @@
 	
 	exports.default = App;
 	
+	//ReactDOM.render(<App/>, document.getElementById('app'));
 	
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+	"use strict";
 	
-	/*ReactDOM.render((
-	   <Router history = {browserHistory}>
-	      <Route path = "/" component = {App}>
-	         <IndexRoute component = {App} />
-	      </Route>
-	   </Router>
-
-	), document.getElementById('app'));*/
+	
+	//var { Router, Route, IndexRoute, Link, browserHistory } = ReactRouter
+	
+	var MainLayout = _react2.default.createClass({
+	  displayName: 'MainLayout',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'app' },
+	      _react2.default.createElement('header', { className: 'primary-header' }),
+	      _react2.default.createElement(
+	        'aside',
+	        { className: 'primary-aside' },
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/' },
+	              'Home'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/users' },
+	              'Users'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/widgets' },
+	              'Widgets'
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'main',
+	        null,
+	        this.props.children
+	      )
+	    );
+	  }
+	});
+	
+	var Homei = _react2.default.createClass({
+	  displayName: 'Homei',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'h1',
+	      null,
+	      'Home Page'
+	    );
+	  }
+	});
+	
+	var SearchLayout = _react2.default.createClass({
+	  displayName: 'SearchLayout',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'search' },
+	      _react2.default.createElement('header', { className: 'search-header' }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'results' },
+	        this.props.children
+	      ),
+	      _react2.default.createElement('div', { className: 'search-footer pagination' })
+	    );
+	  }
+	});
+	
+	var UserList = _react2.default.createClass({
+	  displayName: 'UserList',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'ul',
+	      { className: 'user-list' },
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Dan'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Ryan'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Michael'
+	      )
+	    );
+	  }
+	});
+	
+	var WidgetList = _react2.default.createClass({
+	  displayName: 'WidgetList',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'ul',
+	      { className: 'widget-list' },
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Widget 1'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Widget 2'
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        'Widget 3'
+	      )
+	    );
+	  }
+	});
+	
+	// Note that with how CodePen works, I wasn't able to get the browserHistory to work
+	// as the article suggests. The demo works without it, but you'll want to be sure to
+	// use it in a real application
+	_reactDom2.default.render(_react2.default.createElement(
+	  _reactRouter.Router,
+	  null,
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: '/', component: MainLayout },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: Homei }),
+	    _react2.default.createElement(
+	      _reactRouter.Route,
+	      { component: SearchLayout },
+	      _react2.default.createElement(_reactRouter.Route, { path: 'users', component: UserList }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'widgets', component: WidgetList })
+	    )
+	  )
+	), document.getElementById('app'));
 
 /***/ },
 /* 1 */
